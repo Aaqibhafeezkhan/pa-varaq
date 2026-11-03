@@ -14,9 +14,21 @@ const VERIFY_LIMIT = { max: 5, window: 300 };
 export type OtpSender = { send(contact: string, code: string): Promise<void> };
 export const consoleOtpSender: OtpSender = {
   async send(contact, code) {
-    console.log(`[otp] code for ${contact}: ${code}`);
+    const maskedContact = `${contact.slice(0, 2)}******${contact.slice(-2)}`;
+    console.log(`[otp] code for ${maskedContact}: ${code}`);
   },
 };
+
+const productionOtpSender: OtpSender = {
+  async send() {
+    throw new Error("OTP delivery provider is not configured for production");
+  },
+};
+
+/** The console sender is a local-development fallback, never a production transport. */
+export function createDefaultOtpSender(nodeEnv: Config["NODE_ENV"]): OtpSender {
+  return nodeEnv === "production" ? productionOtpSender : consoleOtpSender;
+}
 
 export type Registration = {
   firstName: string;

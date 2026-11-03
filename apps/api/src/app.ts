@@ -8,7 +8,7 @@ import type { Config } from "./config";
 import type { Db } from "./lib/db";
 import { HttpError } from "./lib/errors";
 import type { KeyValueStore } from "./lib/redis";
-import { authRoutes, consoleOtpSender, createAuthService, type OtpSender } from "./modules/auth";
+import { authRoutes, createAuthService, createDefaultOtpSender, type OtpSender } from "./modules/auth";
 import { catalogRoutes, type MetadataProvider } from "./modules/catalog";
 import { createCatalogModule } from "./modules/catalog";
 import { circleRoutes, createCirclesModule } from "./modules/circles";
@@ -17,6 +17,52 @@ import { createPassportModule, passportRoutes } from "./modules/passport";
 import { createUsersModule, userRoutes } from "./modules/users";
 import { registerAuth } from "./plugins/auth";
 import { discoverRoutes } from "./discover.routes";
+
+const SENSITIVE_LOG_FIELDS = [
+  "phone",
+  "phoneNumber",
+  "phone_number",
+  "mobile",
+  "nationalCode",
+  "national_code",
+  "nationalId",
+  "national_id",
+  "birthDate",
+  "birth_date",
+  "dateOfBirth",
+  "date_of_birth",
+  "code",
+  "otp",
+  "otpCode",
+  "otp_code",
+  "verificationCode",
+  "verification_code",
+];
+
+const sensitiveLogPaths = [
+  "req.headers.authorization",
+  "req.headers.cookie",
+  "request.headers.authorization",
+  "request.headers.cookie",
+  ...SENSITIVE_LOG_FIELDS.flatMap((field) => [
+    `req.body.${field}`,
+    `req.body.*.${field}`,
+    `req.body.*.*.${field}`,
+    `request.body.${field}`,
+    `request.body.*.${field}`,
+    `request.body.*.*.${field}`,
+  ]),
+];
+
+/** Keep sensitive request data out of structured Fastify/Pino logs. */
+export function createLoggerOptions(nodeEnv: Config["NODE_ENV"]) {
+  return nodeEnv === "test"
+    ? false
+    : {
+        level: "info" as const,
+        redact: { paths: sensitiveLogPaths, censor: "[REDACTED]" },
+      };
+}
 
 export type AppDeps = {
   config: Config;
@@ -27,8 +73,8 @@ export type AppDeps = {
 };
 
 /** Composition root: wires modules together through their public service interfaces only. */
-export async function buildApp({ config, db, store, otpSender = consoleOtpSender, metadata }: AppDeps) {
-  const app = Fastify({ logger: config.NODE_ENV === "test" ? false : { level: "info" } });
+export async function buildApp({ config, db, store, otpSender, metadata }: AppDeps) {
+  const app = Fastify({ logger: createLoggerOptions(config.NODE_ENV) });
   app.setValidatorCompiler(validatorCompiler);
   app.setSerializerCompiler(serializerCompiler);
 
@@ -77,7 +123,7 @@ export async function buildApp({ config, db, store, otpSender = consoleOtpSender
     store,
     users,
     circles,
-    sender: otpSender,
+    sender: otpSender ?? createDefaultOtpSender(config.NODE_ENV),
     signToken: (sub) => app.jwt.sign({ sub }),
   });
 
