@@ -203,7 +203,7 @@ SMS delivery, push notifications, ESLint, API integration tests, web/e2e tests, 
 
 ## Contributing
 
-Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md), then browse the [issue board](https://github.com/mahanmntz/pa-varaq/issues) and look for the [`good first issue`](https://github.com/mahanmntz/pa-varaq/labels/good%20first%20issue) label. Only issues labelled `status:ready` can be taken, and the maintainer approves every change. Security reports go through [SECURITY.md](SECURITY.md).
+Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md) and see the [ROADMAP.md](ROADMAP.md) for where the project is going, then browse the [issue board](https://github.com/mahanmntz/pa-varaq/issues) and look for the [`good first issue`](https://github.com/mahanmntz/pa-varaq/labels/good%20first%20issue) label. Only issues labelled `status:ready` can be taken, and the maintainer approves every change. Security reports go through [SECURITY.md](SECURITY.md).
 
 ## License
 
