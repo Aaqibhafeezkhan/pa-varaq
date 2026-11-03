@@ -15,12 +15,12 @@
     "@varaq/shared": "workspace:*",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "framer-motion": "^14.2.0",
+    "framer-motion": "^14.9.0",
     "html5-qrcode": "^2.3.8",
-    "lucide-react": "^0.460.0",
-    "next": "^15.1.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "lucide-react": "^0.577.0",
+    "next": "^15.5.28",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.0",
     "zod": "^3.24.0"
@@ -29,8 +29,8 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "autoprefixer": "^10.4.0",
-    "postcss": "^8.4.0",
+    "autoprefixer": "^10.6.2",
+    "postcss": "^8.5.32",
     "tailwindcss": "^3.4.0",
     "typescript": "^5.6.0"
   }
