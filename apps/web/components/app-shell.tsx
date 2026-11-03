@@ -29,7 +29,7 @@ function Logo() {
       <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-emerald-400 text-primary-foreground shadow-glow">
         <BookOpen size={20} />
       </span>
-      <span className="text-2xl font-extrabold tracking-tight">ورق</span>
+      <span className="text-2xl font-extrabold tracking-tight">پاورق</span>
     </Link>
   );
 }

@@ -2,7 +2,7 @@
   "name": "varaq",
   "version": "0.1.0",
   "private": true,
-  "description": "Varaq (ورق) — peer-to-peer physical book lending and personal bookshelf tracker",
+  "description": "Pa-Varaq (پاورق) — peer-to-peer physical book lending and personal bookshelf tracker",
   "license": "MIT",
   "scripts": {
     "dev": "pnpm infra && pnpm -r --parallel --filter @varaq/api --filter @varaq/web dev",

@@ -34,7 +34,7 @@ export function PassportTimelineView({ data }: { data: PassportTimeline }) {
         </span>
         <p className="text-sm">
           <BookMarked size={14} className="me-1 inline" />
-          شروع سفر: این نسخه را <b>{displayName(data.copy.owner)}</b> به ورق اضافه کرد · {formatDate(data.copy.addedAt)}
+          شروع سفر: این نسخه را <b>{displayName(data.copy.owner)}</b> به پاورق اضافه کرد · {formatDate(data.copy.addedAt)}
         </p>
       </li>
     </ol>

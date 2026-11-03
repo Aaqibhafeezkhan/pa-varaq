@@ -37,7 +37,7 @@ export async function buildApp({ config, db, store, otpSender = consoleOtpSender
     openapi: {
       openapi: "3.0.3",
       info: {
-        title: "Varaq API",
+        title: "Pa-Varaq API",
         description:
           "Peer-to-peer physical book lending for friends and communities. All error bodies look like `{ error: { code, message } }`.",
         version: "0.1.0",

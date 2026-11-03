@@ -1,0 +1,47 @@
+name: Task
+description: A well-defined piece of work (usually created by the maintainer)
+labels: ["type:chore", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Contributors: only take tasks labelled `status:ready` and wait to be assigned (see CONTRIBUTING.md). **Never paste real phone numbers, national IDs or birth dates (use fake values like 09120000000).**
+  - type: textarea
+    id: goal
+    attributes:
+      label: Goal
+      description: What should be true when this is done, and why does it matter?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      value: |
+        - [ ] 
+        - [ ] 
+        - [ ] pnpm format, typecheck and test pass
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [api, web, shared, db, docs, infra]
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty
+      options: [good first issue, medium, hard]
+    validations:
+      required: true
+  - type: textarea
+    id: pointers
+    attributes:
+      label: Pointers
+      description: Relevant files, modules, docs or earlier PRs.
+      placeholder: |
+        - apps/api/src/modules/...
+        - README "Where do I change...?" table

@@ -4,10 +4,10 @@ import "./globals.css";
 import { Providers } from "@/components/providers";
 
 export const metadata: Metadata = {
-  title: { default: "ورق — امانت کتاب بین دوستان", template: "%s | ورق" },
+  title: { default: "پاورق — امانت کتاب بین دوستان", template: "%s | پاورق" },
   description: "کتاب‌های کاغذی‌ات را ثبت کن، به دوستان و هم‌حلقه‌ای‌هایت امانت بده و سفر هر کتاب را دنبال کن.",
-  applicationName: "ورق",
-  appleWebApp: { capable: true, title: "ورق", statusBarStyle: "default" },
+  applicationName: "پاورق",
+  appleWebApp: { capable: true, title: "پاورق", statusBarStyle: "default" },
 };
 export const viewport: Viewport = {
   themeColor: [

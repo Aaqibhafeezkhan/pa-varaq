@@ -14,7 +14,10 @@ export type MetadataProvider = { lookup(isbn: string): Promise<BookMetadata | nu
 
 async function getJson(url: string): Promise<any | null> {
   try {
-    const res = await fetch(url, { signal: AbortSignal.timeout(4000), headers: { "user-agent": "Varaq/0.1 (open-source book lending)" } });
+    const res = await fetch(url, {
+      signal: AbortSignal.timeout(4000),
+      headers: { "user-agent": "Pa-Varaq/0.1 (open-source book lending)" },
+    });
     return res.ok ? await res.json() : null;
   } catch {
     return null;

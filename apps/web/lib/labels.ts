@@ -15,7 +15,7 @@ export const CONDITION_HINT: Record<BookCondition, string> = {
 export const COPY_STATUS_LABEL: Record<CopyStatus, string> = {
   AVAILABLE: "آماده امانت",
   LOANED_INTERNAL: "امانت داده شده",
-  LOANED_EXTERNAL: "نزد دوست (بیرون از ورق)",
+  LOANED_EXTERNAL: "نزد دوست (بیرون از پاورق)",
   UNAVAILABLE: "غیرفعال",
 };
 export const LOAN_STATE_LABEL: Record<LoanState, string> = {

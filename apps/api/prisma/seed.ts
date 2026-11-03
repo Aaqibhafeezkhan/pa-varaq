@@ -227,7 +227,7 @@ async function main() {
   });
   await prisma.bookCopy.update({ where: { id: copies[0].id }, data: { condition: "GOOD" } });
 
-  // An external loan: negar lent a book to a friend outside Varaq.
+  // An external loan: negar lent a book to a friend outside Pa-Varaq.
   await prisma.loan.create({
     data: {
       copyId: copies[8].id,

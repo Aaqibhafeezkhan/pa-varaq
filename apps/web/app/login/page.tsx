@@ -111,7 +111,7 @@ export default function LoginPage() {
           <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-white/15 backdrop-blur">
             <BookOpen />
           </span>
-          <span className="text-3xl font-extrabold">ورق</span>
+          <span className="text-3xl font-extrabold">پاورق</span>
         </div>
         <div className="relative">
           <div className="mb-10 flex justify-center gap-4">
@@ -142,7 +142,7 @@ export default function LoginPage() {
             <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-emerald-400 text-primary-foreground shadow-glow">
               <BookOpen size={26} />
             </div>
-            <h1 className="text-3xl font-extrabold">ورق</h1>
+            <h1 className="text-3xl font-extrabold">پاورق</h1>
           </div>
 
           <div className="glass rounded-3xl p-6 shadow-2xl">

@@ -1,4 +1,4 @@
-# Multi-target build for the Varaq monorepo: `api` and `web`.
+# Multi-target build for the Pa-Varaq monorepo: `api` and `web`.
 # Override NODE_IMAGE if Docker Hub is unreachable (e.g. a registry mirror).
 ARG NODE_IMAGE=node:22-slim
 FROM ${NODE_IMAGE} AS base

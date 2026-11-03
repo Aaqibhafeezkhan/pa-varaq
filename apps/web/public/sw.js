@@ -1,4 +1,4 @@
-/* Minimal service worker: makes Varaq installable and keeps the app shell usable offline. */
+/* Minimal service worker: makes Pa-Varaq installable and keeps the app shell usable offline. */
 const CACHE = "varaq-shell-v1";
 const SHELL = ["/", "/login"];
 

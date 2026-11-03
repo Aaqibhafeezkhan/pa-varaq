@@ -1,21 +1,25 @@
-# Security Policy
+# Security policy
 
-## Supported Versions
+## Reporting a vulnerability
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+**Please do not open a public issue.** Report it privately using GitHub's **Report a vulnerability** button on the repository's **Security** tab (private vulnerability reporting).
 
-| Version | Supported          |
-| ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+Include what you found, how to reproduce it, and the impact. **Never include real phone numbers, national IDs or birth dates**; use fake values.
 
-## Reporting a Vulnerability
+We work on a best-effort basis: expect an initial reply within about 7 days, and we will keep you updated on the fix. Please give us reasonable time to fix the issue before disclosing it publicly.
 
-Use this section to tell people how to report a vulnerability.
+## Scope
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Pa-Varaq stores sensitive identity data, so the following are treated as high priority:
+
+- **Identity data exposure:** last name, national ID, phone number and birth date must only ever be returned to their owner. Anything that leaks them to other users, logs or error messages is a vulnerability. Public user data is limited to first name, `@username`, avatar, trust score and karma tokens.
+- **Login (OTP):** bypassing or brute-forcing the one-time code, the rate limits, or account takeover by phone number.
+- **Loan handshake (PINs):** guessing, reading or reusing the 4-digit handover/return PINs, or skipping the PIN-protected steps of the loan state machine.
+- **Authorization:** acting on other users' books, loans or profiles; bypassing the identity-verification gate.
+- **Token economy:** minting or stealing karma tokens.
+
+Out of scope: findings that need a modified or already-compromised device, missing best-practice headers without a demonstrated impact, social engineering, and issues in third-party services (report those upstream). Development defaults such as `DEV_FIXED_OTP` are for local use only and must never be enabled in production.
+
+## Supported versions
+
+Only the latest commit on `main` is supported.

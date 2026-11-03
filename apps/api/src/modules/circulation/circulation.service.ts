@@ -132,7 +132,7 @@ export function createCirculationService(deps: {
   }
 
   return {
-    // ---- internal loans (between Varaq users) ----
+    // ---- internal loans (between Pa-Varaq users) ----
     async requestLoan(borrowerId: string, input: { copyId: string; dueDate?: Date }) {
       const copy = await catalog.getCopyOrThrow(input.copyId);
       if (copy.ownerId === borrowerId) throw badRequest("CANNOT_BORROW_OWN_BOOK");
@@ -219,7 +219,7 @@ export function createCirculationService(deps: {
       return toLoanDto(updated, userId);
     },
 
-    // ---- external loans (book lent to someone outside Varaq) ----
+    // ---- external loans (book lent to someone outside Pa-Varaq) ----
     async createExternal(ownerId: string, input: { copyId: string; borrowerName: string; dueDate: Date }) {
       const copy = await catalog.getCopyOrThrow(input.copyId);
       if (copy.ownerId !== ownerId) throw forbidden("NOT_COPY_OWNER");

@@ -47,7 +47,7 @@ function Ticker({ items }: { items: Overview["activity"] }) {
       <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
       {a.type === "added" ? (
         <>
-          <b>{displayName(a)}</b> کتاب «{a.title}» را به ورق اضافه کرد
+          <b>{displayName(a)}</b> کتاب «{a.title}» را به پاورق اضافه کرد
         </>
       ) : (
         <>
@@ -57,7 +57,7 @@ function Ticker({ items }: { items: Overview["activity"] }) {
     </span>
   );
   return (
-    <div className="glass overflow-hidden rounded-xl py-2.5" aria-label="تازه‌های ورق" role="marquee">
+    <div className="glass overflow-hidden rounded-xl py-2.5" aria-label="تازه‌های پاورق" role="marquee">
       <div className="flex w-max animate-marquee">
         <div className="flex">{items.map(line)}</div>
         <div className="flex" aria-hidden>
@@ -108,7 +108,7 @@ export default function DiscoverPage() {
         <div className="relative grid gap-8 lg:grid-cols-[1.2fr_1fr] lg:items-center">
           <div>
             <p className="flex items-center gap-1.5 text-sm text-emerald-100">
-              <Sparkles size={16} className="text-amber-300" /> همه کتاب‌های ورق، بدون هیچ پیش‌شرطی
+              <Sparkles size={16} className="text-amber-300" /> همه کتاب‌های پاورق، بدون هیچ پیش‌شرطی
             </p>
             <h1 className="mt-2 text-3xl font-extrabold leading-tight lg:text-5xl">
               کتاب بعدی‌ات
@@ -126,7 +126,7 @@ export default function DiscoverPage() {
               />
             </div>
             <Button variant="accent" className="mt-4 h-11" onClick={() => setSurprise(true)}>
-              <Dices size={18} /> کتاب تصادفی پیشنهاد ورق
+              <Dices size={18} /> کتاب تصادفی پیشنهاد پاورق
             </Button>
           </div>
 
@@ -136,7 +136,7 @@ export default function DiscoverPage() {
               { label: "کتاب آماده امانت", value: stats?.availableBooks, icon: BookCheck, tone: "from-white/20" },
               { label: "امانت فعال", value: stats?.activeLoans, icon: Repeat, tone: "from-amber-300/30" },
               { label: "امانت موفق", value: stats?.completedLoans, icon: ShieldCheck, tone: "from-emerald-300/25" },
-              { label: "عضو ورق", value: stats?.members, icon: Users, tone: "from-violet-300/30" },
+              { label: "عضو پاورق", value: stats?.members, icon: Users, tone: "from-violet-300/30" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -160,7 +160,7 @@ export default function DiscoverPage() {
       {!q && (
         <section>
           <h2 className="mb-3 flex items-center gap-2 text-xl font-extrabold">
-            <Flame className="text-amber-500" size={22} /> تازه‌های ورق
+            <Flame className="text-amber-500" size={22} /> تازه‌های پاورق
           </h2>
           <div className="no-scrollbar -mx-4 flex snap-x gap-4 overflow-x-auto px-4 pb-4 lg:mx-0 lg:px-0">
             {featured.loading && [0, 1, 2, 3, 4, 5].map((i) => <Skeleton key={i} className="aspect-[2/3] w-36 shrink-0" />)}

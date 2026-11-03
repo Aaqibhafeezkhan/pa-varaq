@@ -31,7 +31,7 @@ export function AvatarPickerModal({
       open={open}
       onOpenChange={onOpenChange}
       title="انتخاب آواتار"
-      description="در ورق عکس پروفایل وجود ندارد؛ یکی از آواتارهای آماده را انتخاب کن."
+      description="در پاورق عکس پروفایل وجود ندارد؛ یکی از آواتارهای آماده را انتخاب کن."
     >
       <div className="mb-5 flex justify-center">
         <motion.div

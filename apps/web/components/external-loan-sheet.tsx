@@ -8,7 +8,7 @@ import { isoDateInput } from "@/lib/format";
 import type { Copy, Loan } from "@/lib/types";
 import { mutate } from "@/lib/use-api";
 
-/** Quick-log for a book lent to a friend outside Varaq. */
+/** Quick-log for a book lent to a friend outside Pa-Varaq. */
 export function ExternalLoanSheet({
   copy,
   onOpenChange,
@@ -46,7 +46,7 @@ export function ExternalLoanSheet({
       open={!!copy}
       onOpenChange={onOpenChange}
       title="ثبت امانت دستی به دوست"
-      description={copy ? `«${copy.edition.title}» را به چه کسی دادی؟ ورق یادت می‌ماند.` : undefined}
+      description={copy ? `«${copy.edition.title}» را به چه کسی دادی؟ پاورق یادت می‌ماند.` : undefined}
     >
       <form
         className="space-y-4"

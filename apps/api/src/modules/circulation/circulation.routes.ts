@@ -92,7 +92,7 @@ export function circulationRoutes(circulation: CirculationService) {
 
     r.post(
       "/external-loans",
-      { ...base, schema: { tags, security, summary: "Log a book lent to a friend outside Varaq", body: externalLoanSchema } },
+      { ...base, schema: { tags, security, summary: "Log a book lent to a friend outside Pa-Varaq", body: externalLoanSchema } },
       async (req, reply) => reply.code(201).send(await circulation.createExternal(userId(req), req.body)),
     );
     r.post(

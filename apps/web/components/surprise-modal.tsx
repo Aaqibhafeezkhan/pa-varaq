@@ -38,7 +38,7 @@ export function SurpriseModal({ open, onOpenChange, pool }: { open: boolean; onO
 
   const book = shuffling ? shown : result;
   return (
-    <Sheet open={open} onOpenChange={onOpenChange} title="کتاب تصادفی پیشنهاد ورق" description="بذار ورق یک کتاب برایت انتخاب کند!">
+    <Sheet open={open} onOpenChange={onOpenChange} title="کتاب تصادفی پیشنهاد پاورق" description="بذار پاورق یک کتاب برایت انتخاب کند!">
       <div className="flex flex-col items-center">
         <div className="relative w-40">
           <AnimatePresence mode="popLayout">

@@ -141,7 +141,7 @@ model Loan {
   id                    String         @id @default(uuid()) @db.Uuid
   copyId                String         @map("copy_id") @db.Uuid
   lenderId              String         @map("lender_id") @db.Uuid
-  /// Null for external loans (book lent to someone outside Varaq).
+  /// Null for external loans (book lent to someone outside Pa-Varaq).
   borrowerId            String?        @map("borrower_id") @db.Uuid
   externalBorrowerName  String?        @map("external_borrower_name")
   state                 LoanState      @default(REQUESTED)

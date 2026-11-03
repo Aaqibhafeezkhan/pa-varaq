@@ -1,6 +1,6 @@
 # Contributing
 
-Varaq is built for friends and small communities, so prefer **simple, low-friction** features over enterprise machinery. Read the [README](README.md) first: it explains the layout, the architecture rules and where each kind of change belongs.
+Pa-Varaq is built for friends and small communities, so prefer **simple, low-friction** features over enterprise machinery. Read the [README](README.md) first: it explains the layout, the architecture rules and where each kind of change belongs.
 
 ## Ground rules
 
@@ -51,3 +51,30 @@ CI runs the same checks plus a web build and a migrations/seed run against Postg
 ## Commits and PRs
 
 Use [Conventional Commits](https://www.conventionalcommits.org) in English, for example `feat(circulation): lock PIN after 5 attempts`. Explain what changed and why. For UI changes include a screenshot at mobile width.
+
+## How work is assigned
+
+- Only issues labelled `status:ready` can be taken. Look for `good first issue` if you are new.
+- Comment "I'll take this" on the issue and **wait until the maintainer assigns it to you** before starting.
+- One assignee per issue. If you stop working on it, unassign yourself (or say so in a comment) so someone else can pick it up.
+- Have an idea that is not on the board? Open a feature request first and discuss it before writing code.
+
+## Workflow
+
+1. Fork the repository and clone your fork.
+2. Create a branch from `main`: `feat/…`, `fix/…` or `docs/…` (for example `fix/otp-expiry-message`).
+3. Make your change and run the checks in "Before opening a PR".
+4. Open a pull request against `main` and fill in the template (link the issue with `Closes #123`).
+5. CI must pass. The maintainer reviews, you address feedback, and the PR is squash-merged.
+
+Nothing reaches `main` without the maintainer's approval.
+
+## PR size and review
+
+- Keep PRs small, with one concern each. Unrelated changes (formatting sweeps, renames) belong in separate PRs.
+- The maintainer checks: privacy rules (no private identity fields exposed), RTL and mobile layout, new error codes having a Persian message, tests for new logic, and that the change follows the module structure.
+- Reviews are best effort, usually within a week. If a PR has had no response after that, a polite ping is welcome.
+
+## Community and security
+
+Be kind: this project follows the [Code of Conduct](CODE_OF_CONDUCT.md). To report a vulnerability, follow [SECURITY.md](SECURITY.md); do not open a public issue.

@@ -1,0 +1,42 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly
+labels: ["type:bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping! **Never paste real phone numbers, national IDs or birth dates (use fake values like 09120000000).** For security problems, do not open an issue; use the Security tab instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Log in as ...
+        2. Open ...
+        3. Click ...
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options: [api, web, shared, db, docs, infra, not sure]
+    validations:
+      required: true
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      description: Browser/OS, or Node version if it is an API problem.
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Screenshots at mobile width help for UI bugs. Remove any personal data first.

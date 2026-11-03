@@ -1,4 +1,4 @@
-# Varaq
+# Pa-Varaq (پاورق)
 
 Peer-to-peer lending of physical books for friends, campuses and local communities, plus a personal bookshelf tracker. Free and open source.
 
@@ -8,7 +8,7 @@ The product UI is entirely in **Persian (RTL, Vazirmatn)**. Code, comments, docs
 
 - **Global discovery** – every available book is visible and borrowable. Circles (campus, café, friend group) are only an optional filter.
 - **Personal library** – add books by scanning the ISBN barcode, typing the ISBN, or entering details by hand.
-- **External loans** – log a book lent to someone who is not on Varaq (name + due date) and get a WhatsApp reminder link.
+- **External loans** – log a book lent to someone who is not on Pa-Varaq (name + due date) and get a WhatsApp reminder link.
 - **Loan flow with a 4-digit PIN handshake** – request → approve → hand over → return, with the physical condition logged at both ends.
 - **Karma tokens** – lending earns a token, borrowing locks one until the book is back.
 - **Book Passport** – every physical copy has a timeline; each borrower can leave a one-sentence memory after returning it.
@@ -200,6 +200,10 @@ Copy `.env.example` to `.env` (git-ignored).
 ## Known gaps
 
 SMS delivery, push notifications, ESLint, API integration tests, web/e2e tests, a Jalali date picker (dates are typed as `YYYY/MM/DD`).
+
+## Contributing
+
+Contributions are welcome. Start with [CONTRIBUTING.md](CONTRIBUTING.md), then browse the [issue board](https://github.com/mahanmntz/pa-varaq/issues) and look for the [`good first issue`](https://github.com/mahanmntz/pa-varaq/labels/good%20first%20issue) label. Only issues labelled `status:ready` can be taken, and the maintainer approves every change. Security reports go through [SECURITY.md](SECURITY.md).
 
 ## License
 

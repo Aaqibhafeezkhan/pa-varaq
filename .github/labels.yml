@@ -1,0 +1,19 @@
+# Source of truth for repository labels. Apply with: scripts/sync-labels.sh
+- { name: "good first issue", color: "7057ff", description: "Good for newcomers" }
+- { name: "help wanted", color: "008672", description: "Extra attention is welcome" }
+- { name: "status:ready", color: "0e8a16", description: "Defined and open for contributors to take" }
+- { name: "status:blocked", color: "b60205", description: "Waiting on something else" }
+- { name: "needs-triage", color: "fbca04", description: "Not yet reviewed by the maintainer" }
+- { name: "area:api", color: "1d76db", description: "Backend (apps/api)" }
+- { name: "area:web", color: "5319e7", description: "Frontend (apps/web)" }
+- { name: "area:shared", color: "0075ca", description: "Shared package (packages/shared)" }
+- { name: "area:db", color: "006b75", description: "Schema, migrations and seed" }
+- { name: "area:infra", color: "c5def5", description: "CI, Docker and tooling" }
+- { name: "area:docs", color: "0052cc", description: "Documentation" }
+- { name: "type:bug", color: "d73a4a", description: "Something is not working" }
+- { name: "type:feature", color: "a2eeef", description: "New feature or improvement" }
+- { name: "type:chore", color: "cfd3d7", description: "Maintenance, refactor or housekeeping" }
+- { name: "priority:high", color: "e11d21", description: "Should be done first" }
+- { name: "priority:low", color: "c2e0c6", description: "Nice to have" }
+- { name: "wontfix", color: "ffffff", description: "Will not be worked on" }
+- { name: "duplicate", color: "cfd3d7", description: "Already covered by another issue" }

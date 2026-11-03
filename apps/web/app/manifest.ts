@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "ورق — امانت کتاب بین دوستان",
-    short_name: "ورق",
+    name: "پاورق — امانت کتاب بین دوستان",
+    short_name: "پاورق",
     description: "امانت کتاب کاغذی بین دوستان و هم‌حلقه‌ای‌ها",
     lang: "fa",
     dir: "rtl",
