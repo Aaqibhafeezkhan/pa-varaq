@@ -5,7 +5,7 @@ import { createLoggerOptions } from "./app";
 import { consoleOtpSender, createDefaultOtpSender } from "./modules/auth/auth.service";
 
 describe("API log privacy", () => {
-  it("redacts sensitive request fields and authorization headers from logs", async () => {
+  it("redacts sensitive request fields and authorization headers from logs at any nesting depth", async () => {
     const output: string[] = [];
     const stream = new Writable({
       write(chunk, _encoding, callback) {
@@ -40,7 +40,12 @@ describe("API log privacy", () => {
           nationalCode: "0012345678",
           birthDate: "1378/04/15",
           code: "123456",
-          nested: { otp: "654321" },
+          nested: {
+            profile: {
+              contact: { phone: "09998887766" },
+              verification: { details: { otp: "654321" } },
+            },
+          },
         },
       });
     } finally {
@@ -54,6 +59,7 @@ describe("API log privacy", () => {
       "0012345678",
       "1378/04/15",
       "123456",
+      "09998887766",
       "654321",
     ]) {
       expect(logs).not.toContain(secret);
