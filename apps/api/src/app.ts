@@ -90,7 +90,6 @@ export function createLoggerOptions(nodeEnv: Config["NODE_ENV"]) {
               headers: request.headers,
               remoteAddress: request.remoteAddress,
               remotePort: request.remotePort,
-              body: request.body,
             }),
           request: (request: unknown) => sanitizeSensitiveLogValue(request),
         },
