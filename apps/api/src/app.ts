@@ -83,7 +83,15 @@ export function createLoggerOptions(nodeEnv: Config["NODE_ENV"]) {
     : {
         level: "info" as const,
         serializers: {
-          req: (request: unknown) => sanitizeSensitiveLogValue(request),
+          req: (request: any) =>
+            sanitizeSensitiveLogValue({
+              method: request.method,
+              url: request.url,
+              headers: request.headers,
+              remoteAddress: request.remoteAddress,
+              remotePort: request.remotePort,
+              body: request.body,
+            }),
           request: (request: unknown) => sanitizeSensitiveLogValue(request),
         },
         redact: { paths: sensitiveLogPaths, censor: "[REDACTED]" },
