@@ -39,6 +39,28 @@ const SENSITIVE_LOG_FIELDS = [
   "verification_code",
 ];
 
+const sensitiveLogFieldNames = new Set(
+  [...SENSITIVE_LOG_FIELDS, "authorization", "cookie"].map((field) => field.toLowerCase()),
+);
+
+/** Recursively redact sensitive values before request data reaches Pino serializers. */
+function sanitizeSensitiveLogValue(value: any, seen = new WeakMap<object, any>()): any {
+  if (value === null || typeof value !== "object") return value;
+  const existing = seen.get(value);
+  if (existing) return existing;
+
+  const sanitized: any = Array.isArray(value) ? [] : {};
+  seen.set(value, sanitized);
+
+  for (const [key, nestedValue] of Object.entries(value)) {
+    sanitized[key] = sensitiveLogFieldNames.has(key.toLowerCase())
+      ? "[REDACTED]"
+      : sanitizeSensitiveLogValue(nestedValue, seen);
+  }
+
+  return sanitized;
+}
+
 const sensitiveLogPaths = [
   "req.headers.authorization",
   "req.headers.cookie",
@@ -60,6 +82,10 @@ export function createLoggerOptions(nodeEnv: Config["NODE_ENV"]) {
     ? false
     : {
         level: "info" as const,
+        serializers: {
+          req: (request: unknown) => sanitizeSensitiveLogValue(request),
+          request: (request: unknown) => sanitizeSensitiveLogValue(request),
+        },
         redact: { paths: sensitiveLogPaths, censor: "[REDACTED]" },
       };
 }
