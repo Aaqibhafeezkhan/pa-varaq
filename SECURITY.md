@@ -20,6 +20,10 @@ Pa-Varaq stores sensitive identity data, so the following are treated as high pr
 
 Out of scope: findings that need a modified or already-compromised device, missing best-practice headers without a demonstrated impact, social engineering, and issues in third-party services (report those upstream). Development defaults such as `DEV_FIXED_OTP` are for local use only and must never be enabled in production.
 
+## Logging
+
+API logs redact authorization and cookie headers, phone numbers, national identifiers, birth dates and OTP fields from structured request data. The console OTP sender is a development-only fallback and masks phone numbers; production deployments must configure a real OTP delivery provider.
+
 ## Supported versions
 
 Only the latest commit on `main` is supported.
