@@ -3,7 +3,12 @@ import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
 import Fastify from "fastify";
 import { ZodError } from "zod";
-import { hasZodFastifySchemaValidationErrors, jsonSchemaTransform, serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
+import {
+  hasZodFastifySchemaValidationErrors,
+  jsonSchemaTransform,
+  serializerCompiler,
+  validatorCompiler,
+} from "fastify-type-provider-zod";
 import type { Config } from "./config";
 import type { Db } from "./lib/db";
 import { HttpError } from "./lib/errors";
@@ -39,7 +44,9 @@ const SENSITIVE_LOG_FIELDS = [
   "verification_code",
 ];
 
-const sensitiveLogFieldNames = new Set([...SENSITIVE_LOG_FIELDS, "authorization", "cookie"].map((field) => field.toLowerCase()));
+const sensitiveLogFieldNames = new Set(
+  [...SENSITIVE_LOG_FIELDS, "authorization", "cookie"].map((field) => field.toLowerCase()),
+);
 
 /** Recursively redact sensitive values before request data reaches Pino serializers. */
 function sanitizeSensitiveLogValue(value: any, seen = new WeakMap<object, any>()): any {
@@ -109,7 +116,10 @@ export async function buildApp({ config, db, store, otpSender, metadata }: AppDe
   app.setValidatorCompiler(validatorCompiler);
   app.setSerializerCompiler(serializerCompiler);
 
-  await app.register(cors, { origin: config.CORS_ORIGIN.split(","), methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"] });
+  await app.register(cors, {
+    origin: config.CORS_ORIGIN.split(","),
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  });
   await app.register(swagger, {
     openapi: {
       openapi: "3.0.3",
