@@ -80,8 +80,6 @@ describe("API log privacy", () => {
     const sender = createDefaultOtpSender("production");
 
     expect(sender).not.toBe(consoleOtpSender);
-    await expect(sender.send("09121110001", "123456")).rejects.toThrow(
-      "OTP delivery provider is not configured for production",
-    );
+    await expect(sender.send("09121110001", "123456")).rejects.toThrow("OTP delivery provider is not configured for production");
   });
 });
