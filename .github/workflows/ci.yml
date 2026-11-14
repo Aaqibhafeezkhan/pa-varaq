@@ -25,6 +25,10 @@ jobs:
           cache: pnpm
       - run: pnpm install --frozen-lockfile
       - run: pnpm db:generate
+      - name: Temporary Prettier output
+        run: |
+          pnpm format
+          git diff -- apps/api/src/app.test.ts apps/api/src/app.ts packages/shared/src/normalize.ts
       - run: pnpm format:check
       - run: pnpm typecheck
       - run: pnpm test
