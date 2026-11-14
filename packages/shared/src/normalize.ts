@@ -1,9 +1,6 @@
 const ARABIC_INDIC = "٠١٢٣٤٥٦٧٨٩";
 const PERSIAN_INDIC = "۰۱۲۳۴۵۶۷۸۹";
-const JALALI_BREAKS = [
-  -61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181,
-  1210, 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178,
-];
+const JALALI_BREAKS = [-61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210, 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178];
 
 /** Converts Persian/Arabic-Indic digits to ASCII digits. */
 export function toAsciiDigits(input: string): string {
@@ -117,9 +114,7 @@ function isJalaliLeapYear(year: number): boolean {
 
 /** Validates a Jalali date written as YYYY/MM/DD and returns it normalized, or null. */
 export function normalizeJalaliDate(input: string): string | null {
-  const m = toAsciiDigits(input)
-    .trim()
-    .match(/^(\d{4})[/\-.](\d{1,2})[/\-.](\d{1,2})$/);
+  const m = toAsciiDigits(input).trim().match(/^(\d{4})[/\-.](\d{1,2})[/\-.](\d{1,2})$/);
   if (!m) return null;
 
   const [year, month, day] = [Number(m[1]), Number(m[2]), Number(m[3])];
