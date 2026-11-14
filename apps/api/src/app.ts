@@ -3,12 +3,7 @@ import swagger from "@fastify/swagger";
 import swaggerUi from "@fastify/swagger-ui";
 import Fastify from "fastify";
 import { ZodError } from "zod";
-import {
-  hasZodFastifySchemaValidationErrors,
-  jsonSchemaTransform,
-  serializerCompiler,
-  validatorCompiler,
-} from "fastify-type-provider-zod";
+import { hasZodFastifySchemaValidationErrors, jsonSchemaTransform, serializerCompiler, validatorCompiler } from "fastify-type-provider-zod";
 import type { Config } from "./config";
 import type { Db } from "./lib/db";
 import { HttpError } from "./lib/errors";
@@ -56,9 +51,7 @@ function sanitizeSensitiveLogValue(value: any, seen = new WeakMap<object, any>()
   seen.set(value, sanitized);
 
   for (const [key, nestedValue] of Object.entries(value)) {
-    sanitized[key] = sensitiveLogFieldNames.has(key.toLowerCase())
-      ? "[REDACTED]"
-      : sanitizeSensitiveLogValue(nestedValue, seen);
+    sanitized[key] = sensitiveLogFieldNames.has(key.toLowerCase()) ? "[REDACTED]" : sanitizeSensitiveLogValue(nestedValue, seen);
   }
 
   return sanitized;
