@@ -53,15 +53,7 @@ describe("API log privacy", () => {
     }
 
     const logs = output.join("");
-    for (const secret of [
-      "Bearer secret-token",
-      "09121110001",
-      "0012345678",
-      "1378/04/15",
-      "123456",
-      "09998887766",
-      "654321",
-    ]) {
+    for (const secret of ["Bearer secret-token", "09121110001", "0012345678", "1378/04/15", "123456", "09998887766", "654321"]) {
       expect(logs).not.toContain(secret);
     }
     expect(logs).toContain("[REDACTED]");
@@ -80,8 +72,6 @@ describe("API log privacy", () => {
     const sender = createDefaultOtpSender("production");
 
     expect(sender).not.toBe(consoleOtpSender);
-    await expect(sender.send("09121110001", "123456")).rejects.toThrow(
-      "OTP delivery provider is not configured for production",
-    );
+    await expect(sender.send("09121110001", "123456")).rejects.toThrow("OTP delivery provider is not configured for production");
   });
 });
