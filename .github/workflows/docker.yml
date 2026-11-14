@@ -31,11 +31,14 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: Start the complete stack
-        run: docker compose up --build -d
+        run: docker compose up --build -d --wait --wait-timeout 120
       - name: Verify API and web become healthy
         run: |
-          curl --retry 60 --retry-connrefused --retry-delay 2 --fail http://localhost:4000/health
-          curl --retry 30 --retry-connrefused --retry-delay 2 --fail http://localhost:3000/
+          curl --retry 30 --retry-all-errors --retry-delay 2 --fail http://localhost:4000/health
+          curl --retry 30 --retry-all-errors --retry-delay 2 --fail http://localhost:3000/
+      - name: Show service logs on failure
+        if: failure()
+        run: docker compose logs --no-color
       - name: Stop the stack
         if: always()
         run: docker compose down -v
