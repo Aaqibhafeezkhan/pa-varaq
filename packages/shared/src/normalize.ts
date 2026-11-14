@@ -64,12 +64,7 @@ export function fuzzGeohash(geohash: string, precision: number): string {
 }
 
 /** Builds the normalized text blob indexed by pg_trgm / FTS for an edition. */
-export function buildSearchText(parts: {
-  title: string;
-  authors: string[];
-  publisher?: string | null;
-  isbn?: string | null;
-}): string {
+export function buildSearchText(parts: { title: string; authors: string[]; publisher?: string | null; isbn?: string | null }): string {
   return normalizePersian([parts.title, ...parts.authors, parts.publisher ?? "", parts.isbn ?? ""].join(" "));
 }
 
