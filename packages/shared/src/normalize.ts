@@ -1,5 +1,6 @@
 const ARABIC_INDIC = "٠١٢٣٤٥٦٧٨٩";
 const PERSIAN_INDIC = "۰۱۲۳۴۵۶۷۸۹";
+const JALALI_BREAKS = [-61, 9, 38, 199, 426, 686, 756, 818, 1111, 1181, 1210, 1635, 2060, 2097, 2192, 2262, 2324, 2394, 2456, 3178];
 
 /** Converts Persian/Arabic-Indic digits to ASCII digits. */
 export function toAsciiDigits(input: string): string {
@@ -90,14 +91,39 @@ export function isValidNationalId(input: string): boolean {
   return nationalIdCheckDigit(id.slice(0, 9)) === Number(id[9]);
 }
 
+function isJalaliLeapYear(year: number): boolean {
+  let previousBreak = JALALI_BREAKS[0];
+  let jump = 0;
+
+  for (let i = 1; i < JALALI_BREAKS.length; i++) {
+    const nextBreak = JALALI_BREAKS[i];
+    jump = nextBreak - previousBreak;
+    if (year < nextBreak) break;
+    previousBreak = nextBreak;
+  }
+
+  let yearOffset = year - previousBreak;
+  if (jump - yearOffset < 6) {
+    yearOffset = yearOffset - jump + Math.floor((jump + 4) / 33) * 33;
+  }
+
+  let leap = (((yearOffset + 1) % 33) - 1) % 4;
+  if (leap === -1) leap = 4;
+  return leap === 0;
+}
+
 /** Validates a Jalali date written as YYYY/MM/DD and returns it normalized, or null. */
 export function normalizeJalaliDate(input: string): string | null {
   const m = toAsciiDigits(input)
     .trim()
     .match(/^(\d{4})[/\-.](\d{1,2})[/\-.](\d{1,2})$/);
   if (!m) return null;
-  const [y, mo, d] = [Number(m[1]), Number(m[2]), Number(m[3])];
-  const maxDay = mo <= 6 ? 31 : 30; // Esfand's leap day is not verified; good enough for a birth date
-  if (y < 1280 || y > 1420 || mo < 1 || mo > 12 || d < 1 || d > maxDay) return null;
-  return `${y}/${String(mo).padStart(2, "0")}/${String(d).padStart(2, "0")}`;
+
+  const [year, month, day] = [Number(m[1]), Number(m[2]), Number(m[3])];
+  if (year < 1280 || year > 1420 || month < 1 || month > 12 || day < 1) return null;
+
+  const maxDay = month <= 6 ? 31 : month <= 11 ? 30 : isJalaliLeapYear(year) ? 30 : 29;
+  if (day > maxDay) return null;
+
+  return `${year}/${String(month).padStart(2, "0")}/${String(day).padStart(2, "0")}`;
 }
